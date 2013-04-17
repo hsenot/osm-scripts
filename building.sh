@@ -10,7 +10,7 @@ bzcat /opt/data/australia.osm.bz2 | ./osmosis --read-xml file=- --tf accept-ways
 
 cd /opt/data
 rm buildings.sql
-sudo -u postgres psql -d bip -f /opt/osm/queries.sql
+sudo -u postgres psql -d bip -f /opt/osm/queries-building.sql
 zip buildings.sql.zip buildings.sql
 rm /usr/share/apache2/bip/data/PGDUMP/buildings.sql.zip
 mv buildings.sql.zip /usr/share/apache2/bip/data/PGDUMP/
