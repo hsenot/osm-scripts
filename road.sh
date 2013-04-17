@@ -1,12 +1,12 @@
-#cd /opt/data
-#rm australia.osm.bz2
-#wget http://download.geofabrik.de/openstreetmap/australia-oceania/australia.osm.bz2
+cd /opt/data
+rm australia.osm.bz2
+wget http://download.geofabrik.de/openstreetmap/australia-oceania/australia.osm.bz2
 
-#rm -R pgsqldump
-#mkdir pgsqldump
+rm -R pgsqldump
+mkdir pgsqldump
 
-#cd /opt/osm/osmosis/package/bin
-#bzcat /opt/data/australia.osm.bz2 | ./osmosis --read-xml file=- --bounding-box top=-37.425 left=144.288 bottom=-38.442 right=145.873 --tf accept-ways 'highway=*' --used-node --write-pgsql-dump directory=/opt/data/pgsqldump
+cd /opt/osm/osmosis/package/bin
+bzcat /opt/data/australia.osm.bz2 | ./osmosis --read-xml file=- --bounding-box top=-37.425 left=144.288 bottom=-38.442 right=145.873 --tf accept-ways 'highway=*' --used-node --write-pgsql-dump directory=/opt/data/pgsqldump
 
 cd /opt/data
 rm road_all.*

@@ -87,7 +87,7 @@ ALTER TABLE building_project ADD CONSTRAINT building_project_building_fk FOREIGN
 
 -- populating the building attribute table with new entries and changed names
 insert into building (osm_id,name,address) select osm_id,coalesce(name,(case when building='yes' then null else building end),''),(case when (addr_housenumber is not null) then addr_housenumber||' ' else '' end)||(case when (addr_street is not null) then addr_street||', '||addr_city||(case when (addr_postcode is not null) then ' ('||addr_postcode||')' else '' end) else '' end) from osm_buildings a where not exists (select 1 from building b where b.osm_id=a.osm_id);
-update building set name = coalesce(a.name,(case when building='yes' then null else building end),''),address=(case when (addr_housenumber is not null) then addr_housenumber||' ' else '' end)||(case when (addr_street is not null) then addr_street||', '||addr_city||(case when (addr_postcode is not null) then ' ('||addr_postcode||')' else '' end) else '' end) from osm_buildings a where a.osm_id=building.osm_id
+update building set name = coalesce(a.name,(case when building='yes' then null else building end),''),address=(case when (addr_housenumber is not null) then addr_housenumber||' ' else '' end)||(case when (addr_street is not null) then addr_street||', '||addr_city||(case when (addr_postcode is not null) then ' ('||addr_postcode||')' else '' end) else '' end) from osm_buildings a where a.osm_id=building.osm_id;
 
 -- copy content of the osm_building table to file
 copy osm_buildings to '/opt/data/buildings.sql';

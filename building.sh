@@ -5,7 +5,7 @@ wget http://download.geofabrik.de/openstreetmap/australia-oceania/australia.osm.
 rm -R pgsqldump
 mkdir pgsqldump
 
-cd /opt/osm/osmosis/package/bin
+cd /opt/osm/osmosis/bin/
 bzcat /opt/data/australia.osm.bz2 | ./osmosis --read-xml file=- --tf accept-ways 'building=*' --used-node --write-pgsql-dump directory=/opt/data/pgsqldump
 
 cd /opt/data
